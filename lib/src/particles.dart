@@ -2,7 +2,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 
 class ParticlePainter extends CustomPainter {
-  final List<_Particle> particles;
+  final List<FlareParticle> particles;
   final double time;
 
   ParticlePainter({required this.particles, required this.time});
@@ -16,7 +16,7 @@ class ParticlePainter extends CustomPainter {
           math.sin(p.angle + time * p.speed * 0.7) * p.radius * size.height;
 
       final paint = Paint()
-        ..color = Colors.white.withOpacity(p.opacity)
+        ..color = Colors.white.withValues(alpha: p.opacity)
         ..style = PaintingStyle.fill;
 
       canvas.drawCircle(Offset(x, y), p.size, paint);
@@ -27,7 +27,7 @@ class ParticlePainter extends CustomPainter {
   bool shouldRepaint(ParticlePainter old) => old.time != time;
 }
 
-class _Particle {
+class FlareParticle {
   final double centerX;
   final double centerY;
   final double radius;
@@ -36,7 +36,7 @@ class _Particle {
   final double size;
   final double opacity;
 
-  const _Particle({
+  const FlareParticle({
     required this.centerX,
     required this.centerY,
     required this.radius,
@@ -47,10 +47,10 @@ class _Particle {
   });
 }
 
-List<_Particle> generateParticles(int count) {
+List<FlareParticle> generateParticles(int count) {
   final random = math.Random(42);
   return List.generate(count, (_) {
-    return _Particle(
+    return FlareParticle(
       centerX: random.nextDouble(),
       centerY: random.nextDouble(),
       radius: 0.03 + random.nextDouble() * 0.1,

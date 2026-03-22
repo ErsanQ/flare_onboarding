@@ -35,7 +35,7 @@ class _FlareOnboardingScreenState extends State<FlareOnboardingScreen>
   late final Animation<double> _titleFade;
   late final Animation<double> _buttonScale;
 
-  late final List<dynamic> _particles;
+  late final List<FlareParticle> _particles;
 
   int _currentPage = 0;
   double _pageProgress = 0;
@@ -62,8 +62,7 @@ class _FlareOnboardingScreenState extends State<FlareOnboardingScreen>
     );
 
     _iconScale = Tween<double>(begin: 0.5, end: 1.0).animate(
-      CurvedAnimation(
-          parent: _pageAnimController, curve: Curves.elasticOut),
+      CurvedAnimation(parent: _pageAnimController, curve: Curves.elasticOut),
     );
     _titleSlide = Tween<double>(begin: 30, end: 0).animate(
       CurvedAnimation(
@@ -194,7 +193,7 @@ class _FlareOnboardingScreenState extends State<FlareOnboardingScreen>
                         child: Text(
                           widget.config.skipButtonText,
                           style: TextStyle(
-                            color: Colors.white.withOpacity(0.8),
+                            color: Colors.white.withValues(alpha: 0.8),
                             fontSize: 15,
                             fontWeight: FontWeight.w500,
                           ),
@@ -225,7 +224,7 @@ class _FlareOnboardingScreenState extends State<FlareOnboardingScreen>
                               height: 8,
                               decoration: BoxDecoration(
                                 color: Colors.white
-                                    .withOpacity(isActive ? 1.0 : 0.35),
+                                    .withValues(alpha: isActive ? 1.0 : 0.35),
                                 borderRadius: BorderRadius.circular(4),
                               ),
                             );
@@ -246,11 +245,11 @@ class _FlareOnboardingScreenState extends State<FlareOnboardingScreen>
                             child: Container(
                               height: widget.config.buttonHeight,
                               decoration: BoxDecoration(
-                                color: Colors.white.withOpacity(0.25),
+                                color: Colors.white.withValues(alpha: 0.25),
                                 borderRadius: BorderRadius.circular(
                                     widget.config.buttonBorderRadius),
                                 border: Border.all(
-                                  color: Colors.white.withOpacity(0.4),
+                                  color: Colors.white.withValues(alpha: 0.4),
                                   width: 1.5,
                                 ),
                               ),
@@ -296,9 +295,9 @@ class _FlareOnboardingScreenState extends State<FlareOnboardingScreen>
               height: 130,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: Colors.white.withOpacity(0.2),
+                color: Colors.white.withValues(alpha: 0.2),
                 border: Border.all(
-                  color: Colors.white.withOpacity(0.3),
+                  color: Colors.white.withValues(alpha: 0.3),
                   width: 1.5,
                 ),
               ),
@@ -351,7 +350,7 @@ class _FlareOnboardingScreenState extends State<FlareOnboardingScreen>
                 textAlign: TextAlign.center,
                 style: widget.config.subtitleStyle ??
                     TextStyle(
-                      color: Colors.white.withOpacity(0.8),
+                      color: Colors.white.withValues(alpha: 0.8),
                       fontSize: 16,
                       height: 1.6,
                     ),
