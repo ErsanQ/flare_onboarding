@@ -1,6 +1,6 @@
 name: flare_onboarding
 description: Beautiful animated onboarding screens for Flutter with particle backgrounds, gradient transitions, and spring animations.
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/ErsanQ/flare_onboarding
 
 environment:
